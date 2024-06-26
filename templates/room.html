@@ -1,4 +1,9 @@
 {% extends 'base.html' %} {% block content %}
+
+<div class="user-info">
+  <h3>User: {{ session['name'] }}</h3>
+</div>
+
 <div class="message-box">
   <h2>Chat Room: {{code}}</h2>
   <div class="messages" id="messages"></div>
