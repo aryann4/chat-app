@@ -94,3 +94,12 @@ body{
     font-size: 10px;
     color: darkgray;
   }
+
+  .user-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+    color: #333; /* Adjust color as needed */
+  }
+  
