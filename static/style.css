@@ -1,64 +1,103 @@
-/* Reset CSS */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  font-family: 'Courier New', Courier, monospace;
 }
-
-/* Body styling */
 body {
+  background-color: #212427;
+  color: #fff;
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  padding: 20px;
 }
 
-/* Container for login form and messages */
-.container {
-  max-width: 400px;
-  margin: auto;
-  background-color: #fff;
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 600px; 
+}
+
+h2, h3 {
+  color: #fff;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Buttons */
+.button, .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #2b3642;
+  border: 1px solid #2b3642;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover, .btn:hover {
+  background-color: #21262c;
+  border-color: #21262c;
+}
+
+.button:active, .btn:active {
+  transform: translateY(1px);
+}
+
+form {
+  width: 100%;
+  max-width: 400px; 
+  background-color: #2b3642;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Login form styling */
-form {
-  margin-bottom: 20px;
+  text-align: center;
 }
 
 form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
+  color: #fff;
 }
 
 form input[type="text"],
-form input[type="password"] {
+form input[type="password"],
+.form-control {
   width: calc(100% - 20px);
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-form button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  margin: 8px 0;
+  background-color: #fff;
   border: none;
   border-radius: 4px;
+}
+
+form button[type="submit"],
+.btn-primary {
+  width:100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #2b3642;
+  color: #fff;
+  border: 1px solid #2b3642;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-form button:hover {
-  background-color: #0056b3;
+form button[type="submit"]:hover,
+.btn-primary:hover {
+  background-color: #21262c;
+  border-color: #21262c;
 }
 
-/* Flash message styling */
+form button[type="submit"]:active,
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
 .alert {
   padding: 10px;
   margin-bottom: 15px;
@@ -66,19 +105,54 @@ form button:hover {
 }
 
 .alert-success {
-  background-color: #d4edda;
-  border-color: #c3e6cb;
-  color: #155724;
+  background-color: #28a745;
+  color: #fff;
 }
 
 .alert-danger {
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-  color: #721c24;
+  background-color: #dc3545;
+  color: #fff;
 }
 
-.alert-info {
-  background-color: #d1ecf1;
-  border-color: #bee5eb;
-  color: #0c5460;
+.message-box {
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: #fff;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  align-items: stretch;
+  padding: 10px;
 }
+
+.messages {
+  overflow-y: scroll;
+  flex: 1;
+  width: 100%;
+  color:#212427
+}
+
+.inputs {
+  padding: 10px;
+  display: flex;
+}
+
+.text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.muted {
+  font-size: 10px;
+  color: darkgray;
+}
+
+.thechatcode{
+  color: #212427;
+}
+
