@@ -3,17 +3,17 @@
 {% block content %}
   <h2>Welcome, {{ username }}!</h2>
   
-  <form method="POST" action="{{ url_for('dashboard') }}">
-    <button type="submit" name="create_room">Create a New Room</button>
+  <form method="POST" action="{{ url_for('dashboard') }}" class="thecreatebutton">
+    <button type="submit" name="create_room">create a new room</button>
   </form>
   
   <form method="POST" action="{{ url_for('dashboard') }}">
-    <label>Join Room by Code: </label>
-    <input type="text" placeholder="Enter a room code" name="room_code"/>
-    <button type="submit" name="join_room">Join Room</button>
+    <label>enter a room code: </label>
+    <input type="text" placeholder="room code" name="room_code"/>
+    <button type="submit" name="join_room">join Room</button>
   </form>
 
-  <h3>Your Rooms:</h3>
+  <h3>your rooms:</h3>
   <ul>
     {% if rooms %}
       {% for room in rooms %}
@@ -22,11 +22,11 @@
         </li>
       {% endfor %}
     {% else %}
-      <li>No rooms found.</li>
+      <li>no rooms found.</li>
     {% endif %}
   </ul>
 
-  <form method="POST" action="{{ url_for('home') }}">
-    <button type="submit" name="logout">Logout</button>
+  <form method="POST" action="{{ url_for('home') }}" class="thelogoutbutton">
+    <button type="submit" name="logout">logout</button>
   </form>
 {% endblock %}
