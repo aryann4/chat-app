@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1 class="hometitle">Chat App</h1>
 <div class="buttons">
-  <a href="{{ url_for('login') }}" class="create-btn">Login</a>
-  <a href="{{ url_for('register') }}" class="create-btn">Register</a>
+  <a href="{{ url_for('login') }}" class="button">Login</a>
+  <a href="{{ url_for('register') }}" class="button">Register</a>
 </div>
 {% endblock %}
