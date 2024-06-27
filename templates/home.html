@@ -1,25 +1,8 @@
-{% extends 'base.html' %} {% block content %}
-<div class="form-container">
-<form method="post" class="buttons">
-  <h3>Enter The Chat Room</h3>
-  <div>
-    <label>Name:</label>
-    <input type="text" placeholder="Pick a name!" name="name" value="{{name}}"/>
-  </div>
+{% extends 'base.html' %}
 
-  <button type="submit" name="create" class="create-btn">Create a Room</button>
-
-  <div class="join">
-    <label>Room: </label>
-    <input type="text" placeholder="Room Code" name="code" value="{{code}}"/>
-    <button type="submit" name="join">Join</button>
-  </div>
-
-  {% if error %}
-  <ul>
-    <li>{{error}}</li>
-  </ul>
-  {% endif %}
-</form>
+{% block content %}
+<div class="buttons">
+  <a href="{{ url_for('login') }}" class="create-btn">Login</a>
+  <a href="{{ url_for('register') }}" class="create-btn">Register</a>
 </div>
 {% endblock %}
