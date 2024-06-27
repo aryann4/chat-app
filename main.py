@@ -14,11 +14,10 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 socketio = SocketIO(app)
 
-# Define models
 class Room(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(4), unique=True, nullable=False)
-    messages = db.Column(JSON, nullable=True)  # Store messages as JSON
+    messages = db.Column(JSON, nullable=True)
 
     def add_message(self, sender, message):
         if not self.messages:
@@ -31,7 +30,6 @@ class Room(db.Model):
         })
         self.messages = json.dumps(messages)
 
-# Define association table for user-room relationship
 user_room_association = db.Table('user_room_association',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('room_id', db.Integer, db.ForeignKey('room.id'))
@@ -43,11 +41,9 @@ class User(db.Model):
     password = db.Column(db.String(120), nullable=False)
     rooms = db.relationship('Room', secondary=user_room_association, backref='users')
 
-# Create tables
 with app.app_context():
     db.create_all()
 
-# Helper function to generate unique room codes
 def generate_unique_code(length):
     while True:
         code = "".join(random.choices(ascii_uppercase, k=length))
@@ -55,7 +51,6 @@ def generate_unique_code(length):
             break
     return code
 
-# Routes
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
@@ -143,7 +138,7 @@ def room(code):
         flash("Room does not exist.", "error")
         return redirect(url_for("dashboard"))
 
-    session["room"] = code  # Set the room code in the session
+    session["room"] = code  
 
     messages = json.loads(room.messages) if room.messages else []
     return render_template("room.html", username=username, room_code=code, messages=messages)
