@@ -7,7 +7,7 @@
   </div>
 
   <div class="message-box">
-    <h2>Chat Room: {{ room_code }}</h2>
+    <h2 class="thechatcode">Chat Room: {{ room_code }}</h2>
     <div class="messages" id="messages">
       {% if messages %}
         {% for msg in messages %}
@@ -20,7 +20,7 @@
     </div>
     <div class="inputs">
       <input type="text" placeholder="Message" name="message" id="message"/>
-      <button type="button" name="send" id="send-btn">Send</button>
+      <button type="button" name="send" id="send-btn" class="btn">Send</button>
     </div>
   </div>
 </div>
@@ -34,9 +34,7 @@
       }
     });
 
-    const roomCode = "{{ room_code }}";  // Pass the room code to the client side
-
-    // Function to create a new message DOM element
+    const roomCode = "{{ room_code }}";  
     const createMessage = (sender, message, timestamp) => {
       const messageElement = `
       <div class="text">
@@ -46,12 +44,10 @@
       document.getElementById('messages').innerHTML += messageElement;
     };
 
-    // Receive messages from server
     socket.on('message', function(data) {
       createMessage(data.sender, data.message, data.timestamp);
     });
 
-    // Send message to server
     document.getElementById('send-btn').addEventListener('click', function() {
       const messageInput = document.getElementById('message');
       const message = messageInput.value.trim();
@@ -61,7 +57,6 @@
       }
     });
 
-    // Optional: Send message on Enter key press
     document.getElementById('message').addEventListener('keypress', function(e) {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -69,7 +64,6 @@
       }
     });
 
-    // Notify server when the user joins the room
     socket.emit('join', { room_code: roomCode });
   });
 </script>
