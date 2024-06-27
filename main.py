@@ -1,10 +1,11 @@
 from datetime import datetime
 import random
 from string import ascii_uppercase
-from flask import Flask, render_template, request, session, redirect, url_for, flash
-from flask import get_flashed_messages
+from flask import Flask, render_template, request, session, redirect, url_for, flash, get_flashed_messages
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO, join_room, leave_room, send
+import json
+from sqlalchemy import JSON
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "your_secret_key"
@@ -17,12 +18,18 @@ socketio = SocketIO(app)
 class Room(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(4), unique=True, nullable=False)
-    messages = db.Column(db.JSON)
+    messages = db.Column(JSON, nullable=True)  # Store messages as JSON
 
     def add_message(self, sender, message):
         if not self.messages:
-            self.messages = []
-        self.messages.append({"sender": sender, "message": message, "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
+            self.messages = json.dumps([])
+        messages = json.loads(self.messages)
+        messages.append({
+            "sender": sender,
+            "message": message,
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        })
+        self.messages = json.dumps(messages)
 
 # Define association table for user-room relationship
 user_room_association = db.Table('user_room_association',
@@ -138,10 +145,10 @@ def room(code):
 
     session["room"] = code  # Set the room code in the session
 
-    messages = room.messages if room.messages else []
+    messages = json.loads(room.messages) if room.messages else []
     return render_template("room.html", username=username, room_code=code, messages=messages)
 
-# SocketIO events
+
 @socketio.on("message")
 def handle_message(data):
     room_code = data.get("room_code")
