@@ -1,4 +1,7 @@
-<form method="POST">
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" class="form">
     <div class="form-group">
       <label for="username">Username:</label>
       <input type="text" class="form-control" id="username" name="username" required>
@@ -8,4 +11,5 @@
     </div>
     <button type="submit" class="btn btn-primary" name="register">Register</button>
   </form>
+  {% endblock %}
   
