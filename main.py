@@ -131,6 +131,9 @@ def room(code):
     if not username:
         return redirect(url_for("home"))
 
+    if 'dash_room' in request.form:
+        return redirect(url_for('dashboard'))
+
     user = User.query.filter_by(username=username).first()
     room = Room.query.filter_by(code=code).first()
 
