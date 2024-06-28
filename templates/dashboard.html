@@ -4,7 +4,7 @@
   <h2>Welcome, {{ username }}!</h2>
   
   <form method="POST" action="{{ url_for('dashboard') }}" class="thecreatebutton">
-    <button type="submit" name="create_room">create a new room</button>
+    <button type="submit" name="create_room" class="create-btn">create a new room</button>
   </form>
   
   <form method="POST" action="{{ url_for('dashboard') }}">
@@ -14,19 +14,18 @@
   </form>
 
   <h3>your rooms:</h3>
-  <ul>
     {% if rooms %}
       {% for room in rooms %}
-        <li>
-            <a href="{{ url_for('room', code=room.code) }}">Room Code: {{ room.code }}</a>
-        </li>
+      <form method="POST" action="{{ url_for('room', code=room.code) }}">
+        <input type="hidden" name="room_code" value="{{ room.code }}">
+        <button type="submit" class="room-button">Room Code: {{ room.code }}</button>
+      </form>
       {% endfor %}
     {% else %}
-      <li>no rooms found.</li>
+      <p>no rooms found.</p>
     {% endif %}
-  </ul>
 
   <form method="POST" action="{{ url_for('home') }}" class="thelogoutbutton">
-    <button type="submit" name="logout">logout</button>
+    <button type="submit" name="logout" class="logout-btn">logout</button>
   </form>
 {% endblock %}
