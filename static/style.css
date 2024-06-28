@@ -1,6 +1,7 @@
-*{
+* {
   font-family: 'Courier New', Courier, monospace;
 }
+
 body {
   background-color: #212427;
   color: #fff;
@@ -11,26 +12,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
   min-height: 100vh;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0; 
   max-width: 600px; 
 }
 
-h2, h3 {
+h2,
+h3 {
   color: #fff;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* Buttons */
-.button, .btn {
+.button,
+.btn {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 6px 12px;
   text-decoration: none;
   color: #fff;
   background-color: #2b3642;
@@ -40,18 +37,20 @@ ul {
   cursor: pointer;
 }
 
-.button:hover, .btn:hover {
+.button:hover,
+.btn:hover {
   background-color: #21262c;
   border-color: #21262c;
 }
 
-.button:active, .btn:active {
+.button:active,
+.btn:active {
   transform: translateY(1px);
 }
 
 form {
   width: 100%;
-  max-width: 400px; 
+  max-width: 200px;
   background-color: #2b3642;
   padding: 20px;
   border-radius: 8px;
@@ -76,9 +75,9 @@ form input[type="password"],
 
 form button[type="submit"],
 .btn-primary {
-  width:100%;
-  padding: 10px;
-  margin-top: 10px;
+  width: 100%;
+  padding: 6px 12px; 
+  margin-top: 5px;
   background-color: #2b3642;
   color: #fff;
   border: 1px solid #2b3642;
@@ -118,19 +117,21 @@ form button[type="submit"]:active,
   border: 2px solid #000;
   border-radius: 10px;
   background-color: #fff;
-  height: 80vh;
+  height: calc(100vh - 100px); 
   display: flex;
   flex-direction: column;
   width: 80vw;
   align-items: stretch;
   padding: 10px;
+  overflow-y: auto; 
 }
+
 
 .messages {
   overflow-y: scroll;
   flex: 1;
   width: 100%;
-  color:#212427
+  color: #212427;
 }
 
 .inputs {
@@ -152,7 +153,71 @@ form button[type="submit"]:active,
   color: darkgray;
 }
 
-.thechatcode{
+.thechatcode {
   color: #212427;
+}
+
+.thecreatebutton button,
+.thelogoutbutton button {
+  padding: 8px 12px; 
+}
+
+.thecreatebutton {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+.thelogoutbutton {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.room-button {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 5px;
+  background-color: #2b3642;
+  color: #fff;
+  border: 1px solid #2b3642;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.room-button:hover {
+  background-color: #21262c;
+  border-color: #21262c;
+}
+
+.logout-btn {
+  font-size: 15px;
+}
+
+.create-btn {
+  font-size: 15px;
+}
+
+.user-info {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+.inputs {
+  padding: 10px;
+  display: flex;
+  align-items: center; 
+  overflow-x: hidden; 
+}
+
+.inputs input[type="text"] {
+  flex: 1; 
+  padding: 10px;
+  margin-right: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  max-width: 100%; 
 }
 
