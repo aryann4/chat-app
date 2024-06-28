@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<form method="POST" action="{{ url_for('dashboard') }}" class="thedashbutton">
+  <button type="submit" class="back-btn" class="btn" name="dash_room">Back to Dashboard</button>
+</form>
+
 <div class="content">
   <div class="user-info">
     <h3>User: {{ username }}</h3>
@@ -52,7 +56,7 @@
       const messageInput = document.getElementById('message');
       const message = messageInput.value.trim();
       if (message !== '') {
-        socket.emit('message', { room_code: roomCode, message: message });  // Emit 'message' event with 'room_code' and 'message'
+        socket.emit('message', { room_code: roomCode, message: message });  
         messageInput.value = '';
       }
     });
